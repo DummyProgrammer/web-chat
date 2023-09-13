@@ -14,11 +14,6 @@
         <h2>Welcome to our Web Chat 1.1 Demo</h2>
         <p>This is a test page to demonstrate screen sharing with web chat widget 1.1</p>
     </div>
-    <form>
-        <br>
-            <button type="button" id="start-chat" onclick="genesysWebchat.startEmbeddedChat()">Start Embedded Chat</button>
-        </br>
-    </form>
 
 
     <div class="back-link">
@@ -96,8 +91,10 @@ ININ.webchat.create(chatConfig, function(err, webchat) {
         throw err;
     }
 
-    webchat.renderFrame({
-        containerEl: 'chat-container'
+    webchat.renderPopup({
+        width: 400,
+        height: 400,
+        title: 'Chat'
     });
 });
     </script>
