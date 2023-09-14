@@ -104,10 +104,12 @@
 <!-- deployment-key above is for general chat deployment-key NOT the deployment-key for co-browse -->
 	  
     <script type="text/javascript">
+
     let genesysWebchat = (function() {
         function createChatConfig(){
-            let chatFirstName = document.getElementById('firstName').value;
-            let chatLastName = document.getElementById('lastName').value;
+            let chatData = {};
+            chatData.chatFirstName = document.getElementById('firstName').value;
+            chatData.chatLastName = document.getElementById('lastName').value;
             let agentAddress = document.getElementById('agentAddress').value;
 			let agentCity = document.getElementById('agentCity').value;
 			let agentState = document.getElementById('agentState').value;
@@ -124,6 +126,8 @@
 			let agentEmail = document.getElementById('agentEmail').value;
 			let agentAttributeName = document.getElementById('agentAttributeName').value;
 			let agentAttributeValue = document.getElementById('agentAttributeValue').value;
+
+
 
             // For additional web chat config options, see web chat documentation. This example excludes some of the optional values.
             return {
@@ -153,8 +157,8 @@
                 // Logo used at the top of the chat window
 
                 "data": {
-                    "firstName": chatFirstName,
-                    "lastName": chatLastName,
+                    "firstName": chatData.chatFirstName,
+                    "lastName": chatData.chatLastName,
                     "addressStreet": "",
                     "addressCity": "",
                     "addressPostalCode": "",
