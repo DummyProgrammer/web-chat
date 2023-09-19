@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<p>Genesys Cloud WebMessaging test page</p>
 
-	<ul>
-		<li> <a href="index.html">Genesys Test Site Home Page</a> </li>
-	</ul>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Genesys Cloud WebMessaging Example</title>
-</head>
-<body>
+<body onload="HideMessenger()">
 
-    <h1>Genesys Cloud WebMessaging Example</h1>
+  <h2 style="text-decoration: underline;">Web Messenger Demo</h2>
+  <form id="chatForm">
+      <table class="webmessenger-config" >
+          <tbody>
+              <tr>
+                  <th>First Name:</th>
+                  <td><input type="text" id="first-name" value="Paddington" /></td>
+              </tr>
+              <tr>
+                  <th>Last Name:</th>
+                  <td><input type="text" id="last-name" value="Bear" /></td>
+              </tr>
+      <tr>
+                  <th>Email:</th>
+                  <td><input type="text" id="emailaddress" value="bear@paddington.org" /></td>
+              </tr>
+      
+          </tbody>
+      </table>
+      <button type="button" onclick="ShowMessenger()">Set Participant Info</button>
+  </form>
+  <div style="height:600px" id="chat-container"></div>
 	
     <script type="text/javascript" charset="utf-8">
         (function (g, e, n, es, ys) {
@@ -25,7 +38,34 @@
           environment: 'prod-usw2',
           deploymentId: '3603517e-8e97-4739-bf3c-75e221b410b4'
         });
+
+
+        function HideMessenger()
+          {
+            Genesys("command", "Messenger.close");
+          } 
+
+        function ShowMessenger() {
+
+            var firstName = document.getElementById('first-name').value; 
+            var lastName = document.getElementById('last-name').value;
+            var emailAddress = document.getElementById('emailaddress').value;
+
+            Genesys("command", "Messenger.open");
+
+              Genesys("command", "Database.set", {
+              messaging: {
+                customAttributes: {
+                email: emailAddress,
+                name: firstName,
+                surname: lastName
+                }
+              }  
+            });
+            }	
       </script>
+
+      
 
 <script>
     (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){
