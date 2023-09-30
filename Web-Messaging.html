@@ -51,12 +51,18 @@
 
         function ShowMessenger() {
 
-                    var oMyPlugin = "";
+          var oMyPlugin = "";
 
           if (!oMyPlugin) {
             Genesys("registerPlugin", "MyPlugin", function(oPlugin){
                 oMyPlugin = oPlugin;
                 console.log(oMyPlugin)
+             
+            });
+
+            Genesys("registerPlugin", "MyPlugin", function(oPlugin1){
+                oMyPlugin1 = oPlugin1;
+                console.log(oMyPlugin1)
              
             });
           }
