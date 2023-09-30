@@ -51,21 +51,6 @@
 
         function ShowMessenger() {
 
-          var oMyPlugin = "";
-
-          if (!oMyPlugin) {
-            Genesys("registerPlugin", "MyPlugin", function(oPlugin){
-                oMyPlugin = oPlugin;
-                console.log(oMyPlugin)
-             
-            });
-
-            Genesys("registerPlugin", "MyPlugin", function(oPlugin1){
-                oMyPlugin1 = oPlugin1;
-                console.log(oMyPlugin1)
-             
-            });
-          }
 
             var firstName = document.getElementById('first-name').value; 
             var lastName = document.getElementById('last-name').value;
