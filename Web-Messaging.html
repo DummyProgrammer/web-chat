@@ -51,8 +51,15 @@
 
         function ShowMessenger() {
 
-            const customPlugin = CXBus.registerPlugin('Custom');
-            const customPlugin1 = CXBus.registerPlugin('Custom');
+                    var oMyPlugin = "";
+
+          if (!oMyPlugin) {
+            Genesys("registerPlugin", "MyPlugin", function(oPlugin){
+                oMyPlugin = oPlugin;
+                console.log(oMyPlugin)
+             
+            });
+          }
 
             var firstName = document.getElementById('first-name').value; 
             var lastName = document.getElementById('last-name').value;
