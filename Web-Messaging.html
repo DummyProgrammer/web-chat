@@ -48,6 +48,7 @@
           {
             Genesys("command", "Messenger.close");
           } 
+        /* function to open messenger on button click
 
         function ShowMessenger() {
 
@@ -67,7 +68,24 @@
                 }
               }  
             });
-            }	
+            }
+
+          */
+        var businessLogic = true;
+        if(businessLogic) {
+          Genesys("subscribe", "Launcher.ready", function(){
+            Genesys(
+            'command',
+            'Launcher.show',
+            {},
+            () => {
+            console.log('Launcher opened');
+            },
+            (error) => {
+            console.log("Couldn't open launcher.", error);
+            })
+          });
+        }
       </script>
 
       
