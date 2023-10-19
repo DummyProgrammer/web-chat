@@ -48,8 +48,8 @@
           {
             Genesys("command", "Messenger.close");
           } 
-          
-        // function to open messenger on button click
+
+        // function to open messenger on button click (launcher should be shown by default in the configuration)
 
         function ShowMessenger() {
 
@@ -72,7 +72,8 @@
             }
 
           
-        /* show launcher automatically when webpage is opened
+        /* show launcher automatically when webpage is opened (launcher configuration should be set to show via  business logic trigger)
+
         var businessLogic = true;
         if(businessLogic) {
           Genesys("subscribe", "Launcher.ready", function(){
