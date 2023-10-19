@@ -71,12 +71,13 @@
             }
 
           */
+        // show launcher automatically when webpage is opened
         var businessLogic = true;
         if(businessLogic) {
           Genesys("subscribe", "Launcher.ready", function(){
             Genesys(
             'command',
-            'Launcher.show',
+            'Messenger.open',
             {},
             () => {
             console.log('Launcher opened');
@@ -87,8 +88,6 @@
           });
         }
       </script>
-
-      
 
 <script>
     (function(a,t,c,l,o,u,d){a['_genesysJourneySdk']=o;a[o]=a[o]||function(){
