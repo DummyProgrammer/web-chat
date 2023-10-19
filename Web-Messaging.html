@@ -46,7 +46,21 @@
 
         function HideMessenger()
           {
-            Genesys("command", "Messenger.close");
+            var businessLogic = true;
+            if(businessLogic) {
+              Genesys("subscribe", "Launcher.ready", function(){
+                Genesys(
+                'command',
+                'Launcher.show',
+                {},
+                () => {
+                console.log('Launcher opened');
+                },
+                (error) => {
+                console.log("Couldn't open launcher.", error);
+                })
+              });
+        }
           } 
         /* function to open messenger on button click
 
@@ -72,21 +86,7 @@
 
           */
         // show launcher automatically when webpage is opened
-        var businessLogic = true;
-        if(businessLogic) {
-          Genesys("subscribe", "Launcher.ready", function(message){
-            Genesys(
-            'command',
-            'Launcher.show',
-            {},
-            () => {
-            console.log('Launcher opened' + message);
-            },
-            (error) => {
-            console.log("Couldn't open launcher.", error);
-            })
-          });
-        }
+
 
         Genesys("subscribe", "Launcher.hidden", function(){
           console.log('Messenger is hidden')
