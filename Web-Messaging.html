@@ -74,13 +74,13 @@
         // show launcher automatically when webpage is opened
         var businessLogic = true;
         if(businessLogic) {
-          Genesys("subscribe", "Launcher.ready", function(){
+          Genesys("subscribe", "Launcher.ready", function(message){
             Genesys(
             'command',
             'Launcher.show',
             {},
             () => {
-            console.log('Launcher opened');
+            console.log('Launcher opened' + message);
             },
             (error) => {
             console.log("Couldn't open launcher.", error);
