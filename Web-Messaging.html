@@ -48,7 +48,8 @@
           {
             Genesys("command", "Messenger.close");
           } 
-        /* function to open messenger on button click
+          
+        // function to open messenger on button click
 
         function ShowMessenger() {
 
@@ -70,15 +71,12 @@
             });
             }
 
-          */
-        // show launcher automatically when webpage is opened
+          
+        /* show launcher automatically when webpage is opened
         var businessLogic = true;
         if(businessLogic) {
           Genesys("subscribe", "Launcher.ready", function(){
-            console.log('Launcher is ready to be shown')
-          });
-        }
-        Genesys(
+            Genesys(
             'command',
             'Launcher.show',
             {},
@@ -88,10 +86,13 @@
             (error) => {
             console.log("Couldn't open launcher.", error);
             })
-            
+          });
+        }
+
         Genesys("subscribe", "Launcher.hidden", function(){
           console.log('Messenger is hidden')
         });
+        */
 
       </script>
 
