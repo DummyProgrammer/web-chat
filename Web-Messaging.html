@@ -2,6 +2,13 @@
 
 <html>
 <header>
+  <style>
+
+.popup-container {
+      display: none;
+    }
+
+  </style>
 <title>Web Messenger deploy</title>
 
 <body onload="HideMessenger()">
@@ -26,9 +33,17 @@
           </tbody>
       </table>
       <button type="button" onclick="ShowMessenger()">Set Participant Info</button>
+      <button class="round-button" onclick="openPopup()">Knowledge article</button>
   </form>
   <div style="height:600px" id="chat-container"></div>
-  <div id="genesys-support-center"></div>
+  <div class="popup-container" id="genesys-support-center"></div>
+
+  <script>
+    function openPopup() {
+      document.getElementById('genesys-support-center').style.display = 'flex';
+    }
+
+  </script>
 	
     <script type="text/javascript" charset="utf-8">
         (function (g, e, n, es, ys) {
@@ -93,16 +108,6 @@
             }, 1000); // 1000 milliseconds (1 second)
           });
 
-          Genesys("subscribe", "Knowledge.ready", function () {
-            Genesys(
-                'command',
-                'Knowledge.show',
-                {},)
-
-          }
-          
-          
-          );
         }
 
         Genesys("subscribe", "Launcher.hidden", function(){
