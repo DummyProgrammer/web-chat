@@ -92,6 +92,17 @@
               );
             }, 1000); // 1000 milliseconds (1 second)
           });
+
+          Genesys("subscribe", "Knowledge.ready", function () {
+            Genesys(
+                'command',
+                'Knowledge.show',
+                {},)
+
+          }
+          
+          
+          );
         }
 
         Genesys("subscribe", "Launcher.hidden", function(){
