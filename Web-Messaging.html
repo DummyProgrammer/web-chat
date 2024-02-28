@@ -121,8 +121,21 @@
         Genesys("subscribe", "Launcher.hidden", function(){
           console.log('Messenger is hidden')
         });
-        
+      
+        var oMyPlugin = "";
 
+        if (!oMyPlugin) {
+          Genesys("registerPlugin", "MyPlugin", function(oPlugin){
+          oMyPlugin = oPlugin;
+
+        });
+          Genesys("registerPlugin", "MyPlugin", function(oPlugin){
+          oMyPlugin = oPlugin;
+
+        });
+}
+
+        
       </script>
 
 <script>
