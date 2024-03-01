@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1'>
+<title>Pesquisar</title>
+ <style type="text/css">
+  {
+
+  }
+ </style>
+
+<!--
+<link href="_style/jquery.click-calendario-1.0.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="_scripts/jquery.js"></script>
+		<script type="text/javascript" src="_scripts/jquery.click-calendario-1.0.js"></script>		
+		<script type="text/javascript" src="_scripts/exemplo-calendario.js"></script>
+-->    
+ <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+ <script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+  <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.theme.css">
+  <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.structure.css">
+
+  <script type="text/javascript">
+  function toggleMessenger(){
+    (function (g, e, n, es, ys) {
+          g['_genesysJs'] = e;
+          g[e] = g[e] || function () {
+            (g[e].q = g[e].q || []).push(arguments)
+          };
+          g[e].t = 1 * new Date();
+          g[e].c = es;
+          ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+        })(window, 'Genesys', 'https://apps.usw2.pure.cloud/genesys-bootstrap/genesys.min.js', {
+          environment: 'prod-usw2',
+          deploymentId: '3603517e-8e97-4739-bf3c-75e221b410b4'
+        });
+  } 
+
+function OpenChat(){
+Genesys("command", "Messenger.open");
+}
+function OpenChatLate(){
+setTimeout(function(){Genesys("command", "Messenger.open");}, 5000);
+}
+function toggleMessenger2(){
+  (function (g, e, n, es, ys) {
+          g['_genesysJs'] = e;
+          g[e] = g[e] || function () {
+            (g[e].q = g[e].q || []).push(arguments)
+          };
+          g[e].t = 1 * new Date();
+          g[e].c = es;
+          ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+        })(window, 'Genesys', 'https://apps.usw2.pure.cloud/genesys-bootstrap/genesys.min.js', {
+          environment: 'prod-usw2',
+          deploymentId: '3603517e-8e97-4739-bf3c-75e221b410b4'
+        });
+  
+  }
+  
+function CloseChat(){
+Genesys("command", "Messenger.close");
+}
+
+function setAttributes(n,e,a){
+Genesys("command", "Database.set", {
+   messaging:{
+      customAttributes: {
+          name: n,
+          email: e,
+          accnum: a
+      }
+   }
+});
+}  
+  toggleMessenger2();
+  setAttributes('John Doe','john.doe@test.com','123456789');
+  OpenChatLate();
+</script>
+
+<script type="text/javascript" charset="utf-8">
+
+</script> 
+<div>
+<!-- <iframe src="wm.php" style="border:2px solid green" height="500" width="700" title="Chat"></iframe>      -->
+ </div>
+</head>
+<body>
+<button id="custom-launcher" onclick="OpenChat();">Open</button>
+<button id="custom-launcher" onclick="CloseChat();">Close</button>
+
+<div>
+<button id="custom-launcher" onclick="OpenChat();">Open</button>
+<button id="custom-launcher" onclick="CloseChat();">Close</button>
+<!-- <iframe src="wm2.php" style="border:2px solid blue;" height="500" width="700" title="Chat2"></iframe> -->
+ </div>  
+ <script type="text/javascript">
+ OpenChat();
+ </script>
+  </body>
+
+</html>
