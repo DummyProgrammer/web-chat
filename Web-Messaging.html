@@ -98,7 +98,7 @@
           
         // show launcher automatically when webpage is opened (launcher configuration should be set to show via  business logic trigger)
 
-        var businessLogic = true;
+        var businessLogic = false;
         if (businessLogic) {
           Genesys("subscribe", "Launcher.ready", function () {
             setTimeout(function () {
