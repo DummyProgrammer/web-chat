@@ -18,13 +18,15 @@
     <script>
       window._genesys = {
           "widgets": {
-            "webchat": {
+            "main": {
               "cookieOptions": {
                 "secure": true, 
                 "domain": "dummyprogrammer.github.io", 
                 "path": '/', 
                 "sameSite": "Strict" //Adjust as needed, if further problems arise 'None' could be viable.
               },
+            },
+            "webchat": {
               "transport": {
                 "type": "purecloud-v2-sockets",
                 "dataURL": "https://api.usw2.pure.cloud",
