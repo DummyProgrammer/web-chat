@@ -19,6 +19,12 @@
       window._genesys = {
           "widgets": {
             "webchat": {
+              "cookieOptions": {
+                "secure": true, 
+                "domain": "dummyprogrammer.github.io", 
+                "path": '/', 
+                "sameSite": "Strict" //Adjust as needed, if further problems arise 'None' could be viable.
+              },
               "transport": {
                 "type": "purecloud-v2-sockets",
                 "dataURL": "https://api.usw2.pure.cloud",
@@ -44,16 +50,9 @@
                 "customField2": "",
                 "customField3Label": "",
                 "customField3": ""
-              },
+              }
             },
-            main: {
-                cookieOptions: {
-                  secure: true, 
-                  domain: 'dummyprogrammer.github.io', 
-                  path: '/', 
-                  sameSite: None
-                }
-            }
+
           },
 
       };
