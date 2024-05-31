@@ -17,44 +17,44 @@
 
     <script>
       window._genesys = {
-        main: {
-          cookieOptions: {
-            secure: true, 
-            domain: 'dummyprogrammer.github.io', 
-            path: '/', 
-            sameSite: None
-          },
           "widgets": {
-          "webchat": {
-            "transport": {
-              "type": "purecloud-v2-sockets",
-              "dataURL": "https://api.usw2.pure.cloud",
-              "deploymentKey": "1b369d87-a0c3-4ae4-be49-875e6e458d99",
-              "orgGuid": "24ce1b9d-76d9-4cf1-a22d-0733aef95363",
-              "interactionData": {
-                "routing": {
-                  "targetType": "QUEUE",
-                  "targetAddress": "Joseph Dev Queue",
-                  "priority": 2
+            "webchat": {
+              "transport": {
+                "type": "purecloud-v2-sockets",
+                "dataURL": "https://api.usw2.pure.cloud",
+                "deploymentKey": "1b369d87-a0c3-4ae4-be49-875e6e458d99",
+                "orgGuid": "24ce1b9d-76d9-4cf1-a22d-0733aef95363",
+                "interactionData": {
+                  "routing": {
+                    "targetType": "QUEUE",
+                    "targetAddress": "Joseph Dev Queue",
+                    "priority": 2
+                  }
                 }
+              },
+              "userData": {
+                "addressStreet": "912 Daske Pike",
+                "addressCity": "Gofdizwe",
+                "addressPostalCode": "79891",
+                "addressState": "ID",
+                "phoneNumber": "(804) 613-4440",
+                "customField1Label": "",
+                "customField1": "",
+                "customField2Label": "",
+                "customField2": "",
+                "customField3Label": "",
+                "customField3": ""
               }
             },
-            "userData": {
-              "addressStreet": "912 Daske Pike",
-              "addressCity": "Gofdizwe",
-              "addressPostalCode": "79891",
-              "addressState": "ID",
-              "phoneNumber": "(804) 613-4440",
-              "customField1Label": "",
-              "customField1": "",
-              "customField2Label": "",
-              "customField2": "",
-              "customField3Label": "",
-              "customField3": ""
+            main: {
+                cookieOptions: {
+                  secure: true, 
+                  domain: 'dummyprogrammer.github.io', 
+                  path: '/', 
+                  sameSite: None
+                },
             }
-          }
-        }
-        },
+          },
 
       };
     
