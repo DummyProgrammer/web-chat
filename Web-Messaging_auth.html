@@ -286,7 +286,7 @@
 			const ndSignInButton = document.getElementById('signInButton');
 			const ndSignContent = document.getElementById('signin');
 			const bFetching = localStorage.getItem('authFetching'); // eslint-disable-line
-			let sRedirectURL = "https://dummyprogrammer.github.io/web-chat";//window.location.href; /**OKTA redirecturi is expected to be the full path in case of the deployed url */
+			let sRedirectURL = window.location.href; /**OKTA redirecturi is expected to be the full path in case of the deployed url */
 			let bAuthenticated = false,
 				bAlreadyAuthorized = false,
 				authClient = '',
