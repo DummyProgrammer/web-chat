@@ -94,9 +94,9 @@
               Genesys("command", "Database.set", {
               messaging: {
                 customAttributes: {
-                email: emailAddress,
-                name: firstName,
-                surname: lastName
+                'context.email': emailAddress,
+                'context.name': firstName,
+                'context.surname': lastName
                 }
               }  
             });
