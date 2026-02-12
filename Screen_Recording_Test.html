@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GUID Input Example</title>
+  <title>Screen Recording Test</title>
   <style>
     /* Style for the modal (mini-window) */
     #miniWindow {
@@ -45,8 +45,8 @@
 </head>
 <body>
 
-  <h2>Enter GUID</h2>
-  <input type="text" id="guidInput" placeholder="Enter GUID here">
+  <h2>Enter Conversation GUID</h2>
+  <input type="text" id="guidInput" placeholder="Enter Conversation ID here">
   <button id="submitBtn">Submit</button>
 
   <!-- Overlay -->
@@ -64,27 +64,81 @@
     const overlay = document.getElementById('overlay');
     const saveBtn = document.getElementById('saveBtn');
     const guidInput = document.getElementById('guidInput');
+    const statusText = document.getElementById('statusText');
 
-    submitBtn.addEventListener('click', () => {
-      const guid = guidInput.value.trim();
-      if (!guid) {
-        alert('Please enter a GUID before submitting!');
+    // Genesys Recording API configuration
+    const API_BASE = 'https://api.usw2.pure.cloud/api/v2/conversations/calls';
+    const AUTH_TOKEN = 'RFixmjPW6xoewVaQWv5rW3z1sUwGLFrm9_iPVJJ1pknPqAtGu9PR4dF0ZmJ3Y6gZdenC3WPHFqDypg2Nd9xXxQ'; // replace with your actual token
+
+    // Helper function to call Genesys API
+    async function callGenesysAPI(conversationId, recordingState) {
+      try {
+        const response = await fetch(`${API_BASE}/${conversationId}/recordingstate`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${AUTH_TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ recordingState }) // "paused" or "active"
+
+        });
+
+        if (response.ok) {
+          return { success: true };
+        } else {
+          const errorData = await response.json();
+          return { success: false, message: errorData.message || response.statusText };
+        }
+      } catch (err) {
+        return { success: false, message: err.message };
+      }
+    }
+
+    // Submit button: pause recording
+    submitBtn.addEventListener('click', async () => {
+      const conversationId = guidInput.value.trim();
+      if (!conversationId) {
+        alert('Please enter a Conversation ID (GUID) before submitting!');
         return;
       }
-      // Show mini-window
+
       miniWindow.style.display = 'block';
       overlay.style.display = 'block';
+      statusText.textContent = 'Pausing recording...';
+
+      const result = await callGenesysAPI(conversationId, 'PAUSED');
+      if (result.success) {
+        statusText.textContent = 'Recording Paused';
+      } else {
+        statusText.textContent = `Error: ${result.message}`;
+      }
     });
 
-    saveBtn.addEventListener('click', () => {
-      alert('Saved GUID: ' + guidInput.value);
-      // Hide mini-window
-      miniWindow.style.display = 'none';
-      overlay.style.display = 'none';
-      guidInput.value = ''; // optional: clear input
+    // Save button: resume recording
+    saveBtn.addEventListener('click', async () => {
+      const conversationId = guidInput.value.trim();
+      if (!conversationId) {
+        alert('Conversation ID missing!');
+        return;
+      }
+
+      statusText.textContent = 'Resuming recording...';
+
+      const result = await callGenesysAPI(conversationId, 'ACTIVE');
+      if (result.success) {
+        statusText.textContent = 'Recording Resumed';
+        // Close mini-window after a short delay
+        setTimeout(() => {
+          miniWindow.style.display = 'none';
+          overlay.style.display = 'none';
+          guidInput.value = '';
+        }, 1000);
+      } else {
+        statusText.textContent = `Error: ${result.message}`;
+      }
     });
 
-    // Optional: click outside the mini-window to close it
+    // Close modal if user clicks overlay
     overlay.addEventListener('click', () => {
       miniWindow.style.display = 'none';
       overlay.style.display = 'none';
