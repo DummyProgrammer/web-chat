@@ -50,7 +50,7 @@
     function openPopup() {
       document.getElementById('genesys-support-center').style.display = 'block';
     }
-    localStorage.setItem("abd", surveyId);
+    localStorage.setItem("surveyId", "12345");
 
     /*
     localStorage.removeItem('_actmu');
@@ -131,7 +131,7 @@
         });
         Genesys("subscribe", "MessagingService.conversationDisconnected", function({data}){
             console.log("Conversation Disconnected");
-            localStorage.removeItem(SURVEY_ID_KEY);
+            localStorage.removeItem("surveyId");
 
         });
       
