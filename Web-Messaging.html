@@ -50,7 +50,8 @@
     function openPopup() {
       document.getElementById('genesys-support-center').style.display = 'block';
     }
-    
+    localStorage.setItem(SURVEY_ID_KEY, "abc");
+
     /*
     localStorage.removeItem('_actmu');
     localStorage.removeItem('_actms');
@@ -127,6 +128,11 @@
 
         Genesys("subscribe", "Launcher.hidden", function(){
           console.log('Messenger is hidden')
+        });
+        Genesys("subscribe", "MessagingService.conversationDisconnected", function({data}){
+            console.log("Conversation Disconnected");
+            localStorage.removeItem(SURVEY_ID_KEY);
+
         });
       
         
