@@ -134,6 +134,11 @@
             localStorage.removeItem("surveyId");
 
         });
+        Genesys("subscribe", "Conversations.started", function(){
+          console.log("Conversation Started");
+        });
+
+
       
         
       </script>
