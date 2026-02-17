@@ -129,8 +129,8 @@
         Genesys("subscribe", "Launcher.hidden", function(){
           console.log('Messenger is hidden')
         });
-        Genesys("subscribe", "MessagingService.conversationDisconnected", function({data}){
-            console.log("Conversation Disconnected");
+        Genesys("subscribe", "MessagingService.conversationCleared", function({data}){
+            console.log("Conversation Cleared");
             localStorage.removeItem("surveyId");
 
         });
