@@ -138,7 +138,9 @@
           console.log("Conversation Started");
         });
 
-
+        Genesys("subscribe", "MessagingService.sendingMessage", function({ data }) {
+          console.log("Initial inbound Message sent!");
+        });
       
         
       </script>
