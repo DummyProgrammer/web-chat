@@ -141,6 +141,10 @@
         Genesys("subscribe", "MessagingService.sendingMessage", function({ data }) {
           console.log("Initial inbound Message sent!");
         });
+
+        Genesys("subscribe", "MessagingService.messagesReceived", function({ data }) {
+          console.log(data);
+        });
       
         
       </script>
