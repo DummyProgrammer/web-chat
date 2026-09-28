@@ -304,7 +304,7 @@
 			 * When pkce option is true, OKTAAuth generates its own code verifier and code challenge and stores it in session storage. In order to send the same codeVerifier to the authClient get it from the session storage and resolve it in getAuthCode*/
 			let sOktaTransactionStorage = window.sessionStorage.getItem("okta-transaction-storage"), // eslint-disable-line
 				verifier = '',
-				sNonce = ''; // eslint-disable-line
+				sNonce = '12345'; // eslint-disable-line
 
 			if (sOktaTransactionStorage) {
 				const oStorage = JSON.parse(sOktaTransactionStorage);
